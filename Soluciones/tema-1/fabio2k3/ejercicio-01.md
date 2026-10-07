@@ -40,5 +40,21 @@ Como podemos observar no podemos aislar k, pero es una ecuación que tiene soluc
 
 log(k)/log(n) + 1 > 1 , por lo que k tiene que ser menor que 1000
 
+Se corremos nuestro script de python "ejercicio-01.py" (en este script hacemos una búsqueda binaria de k entre 1 y 1000, ya que el lado izqquierdo de la ecuación solo crece si k crece) obtenemos los sigueintes valores :
 
 
+-------------------------------------------------------
+n     |  k     |  k*(1 + logk / log n)   |  n_nuevo   |
+------------------------------------------------------|
+10^3  | 524.5  |    1000.000000          |  5.245e+05 |
+10^4  | 590.7  |    1000.000000          |  5.907e+06 | 
+10^5  | 640.5  |    1000.000000          |  6.405e+07 |
+10^6  | 679.3  |    1000.000000          |  6.793e+08 |
+10^7  | 710.5  |    1000.000000          |  7.105e+09 |
+10^8  | 736.2  |    1000.000000          |  7.362e+10 |
+10^9  | 757.6  |    1000.000000          |  7.576e+11 |
+-------------------------------------------------------
+
+Observemos que K crece despacio y se acerca a 1000 porque log(k)/log(n) tiende a 0 a medida que n crece
+
+Por lo tanto podemos concluir que con un algoritmo Θ(nlogn) una máquina que es mil veces más rápida, aumenta su tamaño de 500 a 760 dependiendo de n, es decir aprovecha la mejora considerablemente a diferencia del algoritmo Θ(n^2) que solo lo multiplica aproximadamente 32 veces.
