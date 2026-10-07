@@ -24,3 +24,21 @@ Como ya vimos anteriormente g(n') = 1000*g(n), solo nos queda sustituir cada var
     n'/n es aproximadamente 31.6
 
 Por lo tanto el tamaño se multiplica unas 31.6 veces, es decir una máquina mil veces más rápida el tamaño se multiplica por casi 32, sin importar cuál era n.
+
+# Caso 2: Θ(n*logn)
+
+Aquí tenemos que g(n) = n*logn y g(n') = (n')*log(n')
+
+No podemos despejar n' ya que aprece normal como n' y dentro del logaritmo por lo que aplicaremos una sustitucion n' = k*n, donde k es el factor que buscamos.
+
+=>  k*n*log(k*n) = 1000*n*log(n)  / dividmos por n
+    k*log(k*n) = 1000*log(n)
+    k(log(k) + log(n)) = 1000 * log(n) / dividimos por log n
+    k*(log(k)/log(n) + 1) = 1000
+
+Como podemos observar no podemos aislar k, pero es una ecuación que tiene solución, así que podemos probar valores.
+
+log(k)/log(n) + 1 > 1 , por lo que k tiene que ser menor que 1000
+
+
+
