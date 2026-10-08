@@ -39,3 +39,27 @@ Luego al iniciar el ciclo vamos a suponer que nuestra condición se cumple, pero
 
 Por lo tanto podemos decir que el ciclo termina de dos formas: la primera es con A[m] = x, donde devuelve el indíce m, y la segunda es con l > r donde todo índice i cumple que i > m o i < l, así que ningún valor del arreglo vale x por ende nuestro algoritmo devuelve -1
 
+
+Analicemos Potencial:
+----------------------
+
+Sea p = r - l + 1, tamaño del intervalo de los candidatos, p es entero y mayor o igual a 1 mientras el ciclo corre.
+
+Ahora sea s = p al inicio de cada vuelta de nuestro ciclo, por ende m = l + (s - 1) / 2
+                        ------------  => parte entera por debajo
+
+Si no encontramos a x, el nuevo tamaño es:
+
+- Rama Izquierda r = m - 1: m - l = (s - 1) / 2
+- Rama Derecha (l = m + 1): r - m = (s - 1) - (s - 1) / 2 
+
+Nota: las dos divisiones anteriores son parte entera por debajo.
+
+En ambos casos el nuevo tamaño es 0 <= s/2 < s. El peor caso es la rama derecha , que esta descarta menos elementos. Como p es entero, este baja estrictamente y se mantiene mayor o igual a 0, el ciclo termina
+
+Costo:
+------
+
+Después de k vueltas sin encontrar a x, p <= n/(2^k). La vuelta k + 1 solo se realiza si p >= 1, es decir 2^k <= n, que es lo mismo que decir k <= log2(n) parte entera baja. Por lo tanto el número de vuelas es como máximo: parte entera baja de log2(n) + 1 = parte entera baja de log2(n + 1)
+
+Cada vuelta hace una comparación de tres resultados (Q[m] con respecto a x). El costo es o(log n) y el costo en memoria es de O(1).
