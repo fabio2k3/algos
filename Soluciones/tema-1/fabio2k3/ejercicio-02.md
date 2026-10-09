@@ -37,7 +37,7 @@ Luego al iniciar el ciclo vamos a suponer que nuestra condición se cumple, pero
 
 2- Caso opuesto Q[m] > x => es exactamente lo mismo pero en otro sentido i >= m cumple que Q[i] >= Q[m] > x, entonces con el nuevo r = m - 1, todo i> m cumple Q[i] > x, por lo tanto se sigue cumple la condición que planteamos al inicio.
 
-Por lo tanto podemos decir que el ciclo termina de dos formas: la primera es con A[m] = x, donde devuelve el indíce m, y la segunda es con l > r donde todo índice i cumple que i > m o i < l, así que ningún valor del arreglo vale x por ende nuestro algoritmo devuelve -1
+Por lo tanto podemos decir que el ciclo termina de dos formas: la primera es con Q[m] = x, donde devuelve el indíce m, y la segunda es con l > r donde todo índice i cumple que i > m o i < l, así que ningún valor del arreglo vale x por ende nuestro algoritmo devuelve -1
 
 
 Analicemos Potencial:
@@ -63,3 +63,24 @@ Costo:
 Después de k vueltas sin encontrar a x, p <= n/(2^k). La vuelta k + 1 solo se realiza si p >= 1, es decir 2^k <= n, que es lo mismo que decir k <= log2(n) parte entera baja. Por lo tanto el número de vuelas es como máximo: parte entera baja de log2(n) + 1 = parte entera baja de log2(n + 1)
 
 Cada vuelta hace una comparación de tres resultados (Q[m] con respecto a x). El costo es o(log n) y el costo en memoria es de O(1).
+
+
+Cota de información:
+----------------------
+
+Todo algoritmo de búsqueda en un arreglo que esté ordenado que contenga n elementos distintos usando búsqueda binaria necesitará al menos log2(n+1) comparaciones, esto en el peor de los casos.
+
+Analisemos ahora distintas versiones.
+
+1- COn comparaciones de dos resultados: tenemos n + 1 respuestas posibles , los n índices y la opción de NO está. Un arbol de decisión binaria tiene altura h, por ende a lo sumo tiene 2^h hojas entoces:
+
+2^h >= n + 1  ==>>  h >= log2(n+1)
+
+2- Con tres resultados: la rama = es la que termina el cálculo, así que no multiplica hojas. El argumento es el siguiente:
+
+Para responder "x está en i?" nuestro algoritmo tiene que haber comparado x con Q[i] en ese momento. Si no, existe otra entrada Q' que dfiere de Q solo en la posición i, en la que la respuesta correcta es distinta, pero el algoritmo no distingue Q de Q'.
+
+Por lo tanto, cada uno de los n índices aparece como nodo de comparación en el árbol. Si descartamos las ramas =, queda un árbol binario ( > y <) de altura menor o igual que h, que tiene a lo sumo n < 2^h - 1, entonces h >= log2(n +1).
+
+Por ende el costo de la búsqueda binaria es, log2(n+1), que coincide exactamente con la cota que hallamos, por esto es óptima en el modelo de comparaciones.
+
