@@ -47,3 +47,18 @@ Costo:
 ------
 
 Cada vuelta hace una comparación. Tras r vueltas Q <= ⌈n / 2^r⌉, que vale 1 cuando 2^r >= n. Por tanto el algoritmo hace a lo sumo ⌈log2 n⌉ comparaciones, con memoria O(1). 
+
+Ahora, se puede mejorar nuestra solución?
+-----------------------------------------
+
+Teorema: todo algoritmo de comparaciones que halle el mínimo de un arreglo rotado de elementos distintos hace al menor ⌈log2 n⌉ comparaciones en el peor caso
+
+Demostrémoslo:
+
+Hay n salidas posibles. Las n rotaciones de un mismo arreglo creciente son entradas válidas, y en la rotación r el mínimo está en la posición (n - r) módulo n; son n posiciones distintas, así que hay n  respuestas correctas distintas.
+
+Cada una necesita su hoja, el algoritmo ve respuestas de comparaciones, así que dos entradas que llegan a la misma hoja reciben la misma salida. Si sus respuestas correctas son distintas, se equivoca en una. 
+
+Por lo tanto el árbol de dcisión tiene al menos n hojas.
+
+Altura => con elementps disitntos cada comparación tiene dos resultados, así que el árbol de decisión es binario. Un árbol binario de altura h tiene a lo sumo 2^h hojas, porque cada nodo tiene a lo sumo dos hijos y entonces cada nivel tiene a lo sumo el doble de nodo que el anterior (el nivel h tiene a lo sumo 2^h). Como el árbol necesita al menos n hojas, 2^h >= n, por lo tanto h >= (log 2 n). la altura es un entero , h >= ⌈log2 n⌉.
