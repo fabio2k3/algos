@@ -31,7 +31,7 @@ Ahora nos podemos preguntar, ¿es polinomial? pues Nope.
 Un algoritmo es polinomial si su costo está acotado por p(L), donde p es algún polinomio y L el tamaño de la entrada en bits.
 
 Tomemos entradas con n = 2 objetos de pesos y valores pequeños y W = 2^(b-1), entonces:
-- Tamaño de la entrada: L <= c*b para alguna constatne c.
+- Tamaño de la entrada: L <= c*b para alguna constante c.
 - Costo: Θ(nW) = Θ(2^(b-1))
 
 Para cualquier polinomio p, 2^(b-1) > p(O(b)) a partir de cierto b, esto se debe a que cualquier exponencial supera a todo polinomio.

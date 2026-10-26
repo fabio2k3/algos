@@ -7,7 +7,7 @@ Un arreglo A de n elementos distintos es una rotación de uno creciente: A = [a_
 
 Las posiciones menores que p contienen elementos mayores que todos los de las posiciones >= p, y a partir de p el arreglo es creciente. Es decir si i < p <= j, entonces A[i] > A[j], y si p <= i < j , entonces A[i] < A[j].
 
-¿Cómo podemos resolver este problema? Veamos el algortimo
+¿Cómo podemos resolver este problema? Veamos el algoritmo
 ----------------------------------------------------------
 
 def minimo_rotado(A):
@@ -33,9 +33,9 @@ Invariante (I): l <= p <= h, el mínimo está en A[l..h]
 
 Inicialización del algoritmo: l = 0 y h = n - 1: p está en el arreglo.
 
-Dentro del ciclo: con l < h, mid = (l + h) // 2 comple l <= mid < h.
+Dentro del ciclo: con l < h, mid = (l + h) // 2 cumple l <= mid < h.
 
-- Si A[mid] > A[h] no pueder ser mid >= p, porque entonces p <= mid < h y por lo que planteamos A[mid] < A[h]. Entonces luego mid < p , así que p pertenece a [mid + 1, h] y (l = mid + 1) conserva la invariante "I".
+- Si A[mid] > A[h] no puede ser mid >= p, porque entonces p <= mid < h y por lo que planteamos A[mid] < A[h]. Entonces luego mid < p , así que p pertenece a [mid + 1, h] y (l = mid + 1) conserva la invariante "I".
 
 - Si A[mid] < A[h] (son distintos): no puede ser mid < p, porque entonces mid < p <= h y como vimos anteriormente A[mid] > A[h], luego mid >= p, así que p pertenece [l, mid] y h = mid conserva "I"
 
@@ -51,7 +51,7 @@ Cada vuelta hace una comparación. Tras r vueltas Q <= ⌈n / 2^r⌉, que vale 1
 Ahora, se puede mejorar nuestra solución?
 -----------------------------------------
 
-Teorema: todo algoritmo de comparaciones que halle el mínimo de un arreglo rotado de elementos distintos hace al menor ⌈log2 n⌉ comparaciones en el peor caso
+Teorema: todo algoritmo de comparaciones que halle el mínimo de un arreglo rotado de elementos distintos hace al menos ⌈log2 n⌉ comparaciones en el peor caso
 
 Demostrémoslo:
 
@@ -59,6 +59,6 @@ Hay n salidas posibles. Las n rotaciones de un mismo arreglo creciente son entra
 
 Cada una necesita su hoja, el algoritmo ve respuestas de comparaciones, así que dos entradas que llegan a la misma hoja reciben la misma salida. Si sus respuestas correctas son distintas, se equivoca en una. 
 
-Por lo tanto el árbol de dcisión tiene al menos n hojas.
+Por lo tanto el árbol de decisión tiene al menos n hojas.
 
-Altura => con elementps disitntos cada comparación tiene dos resultados, así que el árbol de decisión es binario. Un árbol binario de altura h tiene a lo sumo 2^h hojas, porque cada nodo tiene a lo sumo dos hijos y entonces cada nivel tiene a lo sumo el doble de nodo que el anterior (el nivel h tiene a lo sumo 2^h). Como el árbol necesita al menos n hojas, 2^h >= n, por lo tanto h >= (log 2 n). la altura es un entero , h >= ⌈log2 n⌉.
+Altura => con elementos distintos cada comparación tiene dos resultados, así que el árbol de decisión es binario. Un árbol binario de altura h tiene a lo sumo 2^h hojas, porque cada nodo tiene a lo sumo dos hijos y entonces cada nivel tiene a lo sumo el doble de nodo que el anterior (el nivel h tiene a lo sumo 2^h). Como el árbol necesita al menos n hojas, 2^h >= n, por lo tanto h >= (log 2 n). la altura es un entero , h >= ⌈log2 n⌉.

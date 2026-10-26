@@ -3,7 +3,7 @@
 Tenemos n proponentes y n receptores. Cada proponente a tiene una lista estricta e incompleta L(a) de receptores, de mejor a peor, y prefiere quedarse solo antes que con uno que listó
 
 Vamos a definir nuestro emparejamiento M:
-Cada proponenete queda solo o con un receptor de L(a) y cada receptor tiene a lo sumo un proponente. Ya no tiene por qué ser perfecto.
+Cada proponente queda solo o con un receptor de L(a) y cada receptor tiene a lo sumo un proponente. Ya no tiene por qué ser perfecto.
 
 Un par (a,b) con M(a) != b es bloqueante si:
 1. b pertenece a L(a)
@@ -17,7 +17,7 @@ DEfinamos nuestro algoritmo (adaptado)
 
 Cada proponente a mantiene siguiente[a], el lugar de L(a) al que va a proponer:
 
-Mientras haya un porponente libre a:
+Mientras haya un proponente libre a:
 
 - Si siguiente[a] = !L(a)!, la lista se agotó y a se queda solo, es decir sale del juego.
 - Si no, a le propone a b = L(a)[siguiente[a]] y avanza siguiente[a]. Si b está libre, acepta. Si ya tiene pareja y prefiere a a, lo acepta y su pareja anterior queda libre, si no rechaza a a.
@@ -27,7 +27,7 @@ Terminación:
 
 Q = Σ (|L(a)| - siguiente[a]), el número de propuestas posibles que aún no se hicieron.
 
-Empieza en m = Σ|L(a)| <= n^2, es un entero >= 0, y cada propuesta lo baja exactamente en 1, porque sigueinte[a] solo avanza no se repite ninguna.
+Empieza en m = Σ|L(a)| <= n^2, es un entero >= 0, y cada propuesta lo baja exactamente en 1, porque siguiente[a] solo avanza no se repite ninguna.
 
 Descartar a un proponente de lista agotada no cambia Q, pero un descartado nunca vuelve a quedar libre y eso ocurre a lo sumo n veces.
 
@@ -46,7 +46,7 @@ Primero M es válido, cada a solo propone a receptores de L(a) así que nadie qu
 
 Supongamos que (a,b) es bloqueante, veamos que a le propuso a b:
 
-- Si a termina solo, por (P) agotó su lsita, así que le propuso a todo receptor de L(a), incluido b.
+- Si a termina solo, por (P) agotó su lista, así que le propuso a todo receptor de L(a), incluido b.
 
 - Si a termina con M(a) != b y ranquea b por encima de M(a), por (P) le propuso a b antes que a M(a).
 

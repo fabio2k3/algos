@@ -18,10 +18,10 @@ def mezcla_opt(A, B):
     return R + B[j:] + A[i:]
 
 
-En el peor de los caos hace 2n - 2 comparaciones.
+En el peor de los casos hace 2n - 2 comparaciones.
 
 Cota superior => cada vuelta el ciclo hace una comparación y avanza i o j en 1, así que tras q comparaciones i + j = q.
-La vuetla solo se ejecuta si i <= n - 2 y j <= n -1, por lo que antes de la última comparación c - 1 = i + j <= (n-2) + (n-1) 
+La vuelta solo se ejecuta si i <= n - 2 y j <= n -1, por lo que antes de la última comparación c - 1 = i + j <= (n-2) + (n-1) 
 
 Entonces => c <= 2n - 2
 
@@ -49,11 +49,11 @@ a1 < b1 < a2 < b2 < ...< an < bn ,es decir A = [0,2, 2*n-2] y B = [1, 3, 5, ...,
 
 Esta cadena tiene 2n-1 pares de vecinos, si un algoritmo termina sin compara algún par de vecinos, este falla.
 
-Qué hace la optimizada sobre la entrada? => compara los apres de vecinos en orden hasta sacar an-1 y entonces i = n-1 y para. SOn 2n-3 comparaciones, nunca compara an ni bn así quedan sin comparar los pares de elementos: (bn-1, an) y ( an, bn).
+Qué hace la optimizada sobre la entrada? => compara los pares de vecinos en orden hasta sacar an-1 y entonces i = n-1 y para. SOn 2n-3 comparaciones, nunca compara an ni bn así quedan sin comparar los pares de elementos: (bn-1, an) y ( an, bn).
 
-En intercambio del adversario, intercambiamos los valores an y bn, que son vecinos en la cadena y no se comparan A' = [0,...,2n-4, 2n-1] y B' = [1, ..., 2n-3, 2n-2]. Ambas listas siguen ordenas
+En intercambio del adversario, intercambiamos los valores an y bn, que son vecinos en la cadena y no se comparan A' = [0,...,2n-4, 2n-1] y B' = [1, ..., 2n-3, 2n-2]. Ambas listas siguen ordenadas
 
-Todas las comparacones hechas dan las mismas respuestas en las dos entradas, así que el algoritmo sigue el mismo camino y devuelve los eleemntos en el mismo orden de posiciones a1, b1,..., a(n-1), b(n-1), bn, an
+Todas las comparaciones hechas dan las mismas respuestas en las dos entradas, así que el algoritmo sigue el mismo camino y devuelve los elementos en el mismo orden de posiciones a1, b1,..., a(n-1), b(n-1), bn, an
 
 En la entrada original an < bn, por lo que el orden pone an antes de bn, y en A' ocurre lo contrario. La salida es la misma para las dos, así que es incorrecta en una. En la sale: 0, 1 , ..., 2n-4, 2n-3, 2n-1, 2n-2, que No está ordenada 
 
@@ -62,7 +62,7 @@ La mezcla optimizada es correcta <=> el máximo de las dos listas está en A ( a
 
 (=>)Si an < bn, bn nunca sale dentro del ciclo, para salir tendría que ser menor que algún A[i] con i <= (n-2), pero A[i] < an < bn. entonces el ciclo termina con i = (n-1) y la salida acaba en bn, an que está al revés
 
-(<=) Si an > bn, todo elemento de B es menor que an. Si el ciclo termina con i = n-1, R + B[j:] es la emzcla normal de A[0..n-2] con B y an es mayor que todo, así que ponerlo al final es correcto. Si termina con j = n, queda la mezcla normal más la cola de A, que es correcta
+(<=) Si an > bn, todo elemento de B es menor que an. Si el ciclo termina con i = n-1, R + B[j:] es la mezcla normal de A[0..n-2] con B y an es mayor que todo, así que ponerlo al final es correcto. Si termina con j = n, queda la mezcla normal más la cola de A, que es correcta
 
 Por lo tanto por simetría , fallan exactamente la mitad de las entradas posibles
 

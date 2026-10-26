@@ -9,7 +9,7 @@ Cada Hoja de A devuelve un par (i,j) y a le añadimos un nodo que pruebe el sign
 
 Si hay valores iguales, la distancia mínima es 0, por lo que el par devuelto cumple xi = xj. Si todos son disitntos, todo par tiene una distancia positiva, incluido el devuelto, por ende es Correcto.
 
-El árbol resultatne resuelve distinción de elementos con profundidad T(n) + 1, que por teorema visto anteriormente esta profundidad es Ω(nlogn).
+El árbol resultante resuelve distinción de elementos con profundidad T(n) + 1, que por teorema visto anteriormente esta profundidad es Ω(nlogn).
 
 Por lo tanto T(n) = Ω(nlogn)
 
@@ -18,13 +18,13 @@ Ahora veamos que algoritmo rompe la cota y en qué modelo
 
 El algoritmo incremental aleatorio de la sección 9, rejilla en tabla hash, con costo esperado O(n)
 
-Modelo => Word RAM aleatorizado con tabla hash, usa dos operaciones que un árbol de decisión algebracio no tiene:
+Modelo => Word RAM aleatorizado con tabla hash, usa dos operaciones que un árbol de decisión algebraico no tiene:
 
 . parte entera ⌊q / k⌋ que no es un polinomio ni es continua.
 
 . Direccionamiento indirecto, usa el resultado como índice para buscar en la tabla.
 
-No hay contradicción con Ben-Or, la cota vale para otro modelo, más debil. Una cota mínima va siempre unida a su modelo.
+No hay contradicción con Ben-Or, la cota vale para otro modelo, más débil. Una cota mínima va siempre unida a su modelo.
 
 
 Hagamos la adaptación a uno dimensión:
@@ -44,9 +44,9 @@ Para insertar p con c = ⌊p/k⌋:
 
 Invariante => cada celda tiene a lo sumo un punto. Dos puntos de la misma celda están a distancia menor que k, pero k es la mínima distancia entre los puntos insertados.
 
-Correctitud: si q ya insertado cumple |p-q| < k, entonces |⌊p/k⌋ - ⌊q/k⌋| <= 1, asi que q está en una de las 3 celdas consultadas, y cada una tiene a lo sumo un punto.
+Correctitud: si q ya insertado cumple |p-q| < k, entonces |⌊p/k⌋ - ⌊q/k⌋| <= 1, así que q está en una de las 3 celdas consultadas, y cada una tiene a lo sumo un punto.
 
-por lo tanto el nuevo k es min(k, min_q |p-q|), y por induccion sobre i, tras insertar pi el valor k es la distancia minima entre p1, p2, ..., pi. Si la celda de p estaba ocupada por algún q, entonces |p-q| < k y k baja. Luego en el paso 3 la celda está libre, y la invariante se conserva.
+por lo tanto el nuevo k es min(k, min_q |p-q|), y por inducción sobre i, tras insertar pi el valor k es la distancia mínima entre p1, p2, ..., pi. Si la celda de p estaba ocupada por algún q, entonces |p-q| < k y k baja. Luego en el paso 3 la celda está libre, y la invariante se conserva.
 
 Costo esperado: sin reconstrucciones, cada inserción hace 3 consultas , O(1). El paso i+1, reconstruye solo si p_[i+1] hizo bajar k estrictamente, es decir, si pertenece a todos los pares más cercanos de S = {p1, ..., p_[i+1]} y a lo sumo 2 puntos de S cumplen eso.
 Como el orden es una permutación uniforme, p_[i+1] es uniforme dentro de S, así que: Pr[reconstruir] <= 2/(i+1).
