@@ -1,4 +1,4 @@
-# Solucion ejercicio 5
+# Solución ejercicio 5
 
 Tenemos una lista enlazada con una cierta cantidad de nodos n, donde cada nodo tiene un nodo siguiente o None. Tenemos que decidir si algún nodo se repite al seguir los siguientes desde head.
 
@@ -33,7 +33,7 @@ I => i iteraciones sin haber devuelto True, t  = x_i y h = x_[2i]
 
 Analicemos la correctitud del algoritmo: Devuelve true <=> hay ciclo:
 
-(=>) Si deuvelve True hay ciclo: Por I, x_i = x_[2i] con i >= 1, es decir que un mismo nodo se visita dos veces en dos tiempos distintos. Sin ciclo todos los x_k son distintos, así que hay ciclo.
+(=>) Si devuelve True hay ciclo: Por I, x_i = x_[2i] con i >= 1, es decir que un mismo nodo se visita dos veces en dos tiempos distintos. Sin ciclo todos los x_k son distintos, así que hay ciclo.
 
 (<=) Si hay ciclo, devuelve True: con ciclo, h nunca llega a ser None, así que el ciclo while solo termina devolviendo True
 
@@ -44,12 +44,12 @@ i' = λ ⌈max(p, 1) / λ⌉  que existe siempre, En la iteración i' el algorit
 
 Potencial:
 - Con ciclo: Q = i' - i es un entero que baja una unidad es decir 1 por iteración y llega a 0 en la iteración que devuelve True.
-- Sin ciclo: W = número de nodos desde h hasta el ginal, es un entero mayor o igual a cero. El cilco while exige que Q >= 2, y cada iteración avanza h 2 nodos, así que W baja exactamente en 2, por lo tanto hay a lo sumo ⌊n / 2⌋ iteraciones y el algoritmo devuelve False.
+- Sin ciclo: W = número de nodos desde h hasta el final, es un entero mayor o igual a cero. El ciclo while exige que Q >= 2, y cada iteración avanza h 2 nodos, así que W baja exactamente en 2, por lo tanto hay a lo sumo ⌊n / 2⌋ iteraciones y el algoritmo devuelve False.
 
 Costo de nuestro algoritmo
 --------------------------
 - Sin ciclo a lo sumo ⌊n / 2⌋ iteraciones
-- Con cilo: i' = λ*⌈max(p, 1) / λ⌉ <= p + λ = n iteraciones.
+- Con ciclo: i' = λ*⌈max(p, 1) / λ⌉ <= p + λ = n iteraciones.
 
 Tiempo O(n), memoria O(1). La alternativa de guardar los nodos visitados también nos da O(n), en el tiempo pero con memoria O(n).
 

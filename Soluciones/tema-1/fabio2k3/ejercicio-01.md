@@ -29,9 +29,9 @@ Por lo tanto el tamaño se multiplica unas 31.6 veces, es decir una máquina mil
 
 Aquí tenemos que g(n) = n*logn y g(n') = (n')*log(n')
 
-No podemos despejar n' ya que aprece normal como n' y dentro del logaritmo por lo que aplicaremos una sustitucion n' = k*n, donde k es el factor que buscamos.
+No podemos despejar n' ya que aparece normal como n' y dentro del logaritmo por lo que aplicaremos una sustitución n' = k*n, donde k es el factor que buscamos.
 
-=>  k*n*log(k*n) = 1000*n*log(n)  / dividmos por n
+=>  k*n*log(k*n) = 1000*n*log(n)  / dividimos por n
     k*log(k*n) = 1000*log(n)
     k(log(k) + log(n)) = 1000 * log(n) / dividimos por log n
     k*(log(k)/log(n) + 1) = 1000
@@ -40,7 +40,7 @@ Como podemos observar no podemos aislar k, pero es una ecuación que tiene soluc
 
 log(k)/log(n) + 1 > 1 , por lo que k tiene que ser menor que 1000
 
-Se corremos nuestro script de python "ejercicio-01.py" (en este script hacemos una búsqueda binaria de k entre 1 y 1000, ya que el lado izqquierdo de la ecuación solo crece si k crece) obtenemos los sigueintes valores :
+Si corremos nuestro script de python "ejercicio-01.py" (en este script hacemos una búsqueda binaria de k entre 1 y 1000, ya que el lado izquierdo de la ecuación solo crece si k crece) obtenemos los siguientes valores :
 
 
 -------------------------------------------------------

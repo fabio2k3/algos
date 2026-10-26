@@ -33,7 +33,7 @@ I => toda posición i de la pila, con S[i] = (v_i, m_i), se cumple que m_i = min
 
 Podemos observar que es inductivo ya que cada operación lo conserva sin suponer ninguna otra información sobre nuestra pila.
 
-Inicialiszación:
+Inicialización:
 ----------------
 
 La pila inicia vacía, así que I se cumple 
@@ -44,7 +44,7 @@ Actualización:
 - push(x): las posiciones ya existentes no cambian por lo que siguen cumpliendo I. La nueva posición i, guarda m = min(x, m_(i-1)). Por lo planteado en I, en i-1, m_(i-1) = min(v_0, ..., v_(i-1)), luego al añadir x m = min(v_0, ..., v_(i-1), x) = min(v_0, ..., v_i).
 Si la pila al inicio está vacía m = x.
 
-- pop(): este quita la última posición. Cada m_i depende de las posiciones que son menores o igaules a él, así que las restantes posiciones siguen cumpliendo I.
+- pop(): este quita la última posición. Cada m_i depende de las posiciones que son menores o iguales a él, así que las restantes posiciones siguen cumpliendo I.
 
 - tope(): no modifica nada en la pila
 
@@ -58,7 +58,7 @@ Costo:
 ---------------------------------------------------------------------------------
 Operación | Costo |    Why?                                                     |
 --------------------------------------------------------------------------------|
-push      |  O(1) | una compapración, una lectura del tope, una escritura final |
+push      |  O(1) | una comparación, una lectura del tope, una escritura final |
 pop       |  O(1) | una lectura , un borrado al final                           |
 tope      |  O(1) | una lectura                                                 |
 minimo    |  O(1) | una lectura                                                 |
