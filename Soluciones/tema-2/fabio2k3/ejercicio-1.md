@@ -121,3 +121,31 @@ Al trabajar con Z17 todos los cálculos se realizan módulo 17
 ejemplo: 17*x ≡ 0 (mod 17)
 
 Por ende esta afirmación 17*x ≡ 0 es falsa para cualquier entero distinto de 0
+
+## Inciso D
+
+La diferencia entre el producto verdadero y el producto afirmado es:
+
+R(x) = -x^2 + 3x - 2
+
+como el grado es, la probabilidad de error en una ronda es:
+
+P(error) <= 2 / 17
+
+con K rondas independientes, la probabilidad de error queda acotada por:
+
+P(error) <= (2 / 17)^k
+
+queremos que: (2 / 17)^k  < 10^(-6)
+
+aplicando logaritmo obtenemos:
+
+k > log(10^(-6)) / log(2/17)  => k > 6.13
+
+Por lo tanto k = 7 rondas independientes
+
+
+¿Usan todas las rondas el mismo r?
+----------------------------------
+
+Las comprobaciones no son independientes, ya que se evalúan siempre en el mismo punto, si ese valor es una raíz de la diferencia entre los polinomios, todas las rondas aceptarán incorrectamente, por lo tanto la probabilidad de error no disminuye, independientemente del número de rondas.
