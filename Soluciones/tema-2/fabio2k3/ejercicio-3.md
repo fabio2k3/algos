@@ -48,3 +48,37 @@ El problema para aplicar el inciso anterior es que no disponemos de un verificad
 Una respuesta negativa viene acompañada de un vector que sirve como testigo de que los productos son diferentes. En cambio, una respuesta afirmativa no proporciona una garantía de que las matrices son iguales. Para verificarlo determinísticamente tendríamos que calcular el producto compelto AB y comprobarlo con C, lo cual cuesta O(n^3) utilizando multiplicación tradicional.
 
 Por lo tanto aunque podemos realizar la transformación formalmente, el verifivador tendría un costo elevado y perderíamos la ventaja de Freivalds.
+
+## Inciso C
+El algoritmo de contracción de Karger busca encontrar el corte mínimo globar de un grafo mediante la contracción aleatoria de aristas. Sabemos que una ejecución del algoritmo devuelve un corte mínimo con probablidad al menos:
+
+p = 2 / (n*(n-1))
+
+Por lo tanto , podemos aplicar el inciso a, utilzando como verificador el algoritmo determinista que calcula el corte mínimo global mediante n - 1 flujos máximos.
+
+Costo del algoritmo Monte Carlo:
+
+Una ejecución de Karger cuesta: T = (m log n)
+
+Costo del verificador: podemos calcular el corte mínimo global fijando un vértice s de grado mínimo y calculando los flujos máximos entre s y los restantes n - 1 vértices. Utlizando Ford-Fulkerson, el costo total de estos flujos es:
+
+T' = O(m^2)
+Aplicamos ahora la fórmula del inciso a: E[T_total] = (T + T') / p
+
+=> E[T_total] = (O(mlogn) + O(m^2)) / (2/(n(n-1)))
+
+por lo tanto => E[T_total] = O(n^2 * m^2)
+
+Ahora podemos preguntarnos, tiene sentido esto? La respuesta es no, por qué?
+
+Porque el propio verificador ya calcula determinísticamente el corte mínimo global. Es decir estamos ejecutando karger para obetner una solución y después ejecutando un algoritmo determinista mucho más costoso para comprobar si esa solución es correcta.
+
+Incluso podríamos devolver directamente el resultado del verificador sin necesidad de ejecutar Karger. Por lo tanto la transformación no aporta ninguna ventaja, obtenemos un algoritmo inncesariamente costoso cuando ya disponemos de una solución determinista.
+
+## Inciso d
+
+El algoritmo Monte Carlo obtenido en ese ejercicio tiene tiempo máximo 2T y deuvelve una respuesta correcta con probabilidad al menos p = 1/ 2. Como el verificador solo necesita comprobar que la respuesta no sea "no sé", su costo es T' = O(1). Por tanto , usando elr esultado del inciso a:
+
+E[T_(Las_Vegas)] <= (2T + O(1)) / (1/2) = 4T + O(1)
+
+Obtenemos un algoritmo cuyo tiempo esperado es a lo sumo 4T + O(1), aunque el algoritmo original ya tenía tiempo esperado a lo sumo T.
